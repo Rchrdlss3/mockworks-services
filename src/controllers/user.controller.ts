@@ -9,10 +9,10 @@ function escapeRegex(value: string): string {
 export async function getUsers(req: Request, res: Response) {
     try {
         if (!req.query.id) {
-            const users = await mongoose.connection?.db?.collection("users").find().toArray();
+            const users = await User.find()
             res.status(200).json(users);
         } else {
-            const user = await mongoose.connection?.db?.collection("users").findOne({ id: req.query.id });
+            const user = await User.findOne({ id: req.query.id });
             res.status(200).json(user);
         }
     } catch (error) {
@@ -22,15 +22,14 @@ export async function getUsers(req: Request, res: Response) {
 }
 
 export async function getUserByName (req: Request, res: Response) {
-    const query = req.query.name;
-    console.log(query)
+    const query = req.query.name as string;
     try {
-        const users = await mongoose.connection.db?.collection("users").find({
-           $or: [ 
-            {"personalInformation.firstName" : {$regex: query, $options: "i"}},
-            {"personalInformation.lastName" : {$regex: query, $options: "i"}}
-           ]}
-        ).toArray();
+        const users = await User.find({
+            $or : [
+                {"personalInformation.firstName" : {$regex: query, $options: "i"}},
+                {"personalInformation.lastName" : {$regex: query, $options: "i"}}
+            ]
+        })
         res.status(200).json(users)
     } catch (e) {
         console.error(e);
