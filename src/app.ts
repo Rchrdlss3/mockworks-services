@@ -8,7 +8,7 @@ const corsOptions = {
 };
 
   const app = express();
-
+  app.listen(3008)
 
   app.use(cors(corsOptions));
   app.use(express.json());

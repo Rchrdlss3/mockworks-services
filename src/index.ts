@@ -2,14 +2,14 @@ import "dotenv/config";
 import { router } from "./routes/index";
 import cors from "cors"
 import app from "./app";
-import { Response } from "express";
+import type { Response, Request } from "express";
 
 const corsOptions = {
   origin: ["http://localhost:3000"],
 };
 
-app.get('/',(res:Response) => {
-  res.send('Welcome to Mockworks Services')
+app.get('/',(req:Request, res:Response) => {
+  res.status(200).json('Welcome to Mockworks Services')
 });
 
 app.use(cors(corsOptions));
