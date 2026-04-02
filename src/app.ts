@@ -6,7 +6,7 @@ import { connectToDatabase } from "./utils/database";
 import type { Response, Request } from "express";
 
 const corsOptions = {
-  origin: ["http://localhost:3000","https://rchrdlss3.github.io"],
+  origin: ["http://localhost:3000","https://rchrdlss3.github.io", "https://rchrdlss3.github.io/mockworks"],
 };
 
   const app = express();
