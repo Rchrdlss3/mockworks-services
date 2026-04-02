@@ -1,6 +1,6 @@
 import cors from "cors";
 import express from "express";
-import { router } from "./routes/index.js";
+import { router } from "./routes/index";
 
 const corsOptions = {
   origin: ["http://localhost:3000"],
