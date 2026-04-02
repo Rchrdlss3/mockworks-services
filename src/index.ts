@@ -1,9 +1,8 @@
 import "dotenv/config";
-import { createApp } from "./app";
 import { connectToDatabase } from "./utils/database";
 import { router } from "./routes/index";
 import cors from "cors"
-const app = createApp();
+import app from "./app";
 const port = Number(process.env.PORT) || 3008;
 
 void connectToDatabase();
