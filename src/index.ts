@@ -8,10 +8,6 @@ const port = Number(process.env.PORT) || 3008;
 
 void connectToDatabase();
 
-app.listen(port, () => {
-  console.log(`Server listening on http://localhost:${port}`);
-});
-
 const corsOptions = {
   origin: ["http://localhost:3000"],
 };
